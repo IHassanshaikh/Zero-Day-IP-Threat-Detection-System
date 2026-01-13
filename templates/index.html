@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zero-Day IP Threat Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <header>
+            <div class="logo">🛡️ AI-SECURE</div>
+            <h1>Zero-Day IP Threat Detection</h1>
+            <p>Powered by Google Gemini AI & Behavioral Analysis</p>
+        </header>
+
+        <!-- Control Panel -->
+        <section class="control-panel">
+            <button class="secondary-btn" onclick="scanNetwork()">📡 Scan Network for IPs</button>
+        </section>
+
+        <!-- IP List (Hidden initially) -->
+        <div id="ipListPanel" class="hidden">
+            <h3>Active IPs Detected in Traffic:</h3>
+            <div id="ipListContainer" class="ip-tags"></div>
+        </div>
+
+        <!-- Input Section -->
+        <section class="input-section">
+            <input type="text" id="ipInput" placeholder="Enter IP Address (e.g., 10.0.0.12)" autocomplete="off">
+            <button id="analyzeBtn" onclick="analyzeIP()">Analyze with AI</button>
+        </section>
+
+        <!-- Loading -->
+        <div id="loading" class="hidden">
+            <div class="spinner"></div>
+            <p>Gemini AI is analyzing traffic behavior...</p>
+        </div>
+
+        <!-- Results -->
+        <section id="results" class="results-section hidden">
+            <div class="score-card">
+                <h2>Threat Score</h2>
+                <div class="gauge-container">
+                    <div class="gauge-bg"></div>
+                    <div class="score-text" id="scoreValue">0</div>
+                </div>
+                <h3 id="statusText">NORMAL</h3>
+            </div>
+
+            <div class="details-card">
+                <h2>AI Analysis Report</h2>
+                <p><strong>Target IP:</strong> <span id="resIp"></span></p>
+                <div class="reason-box">
+                    <strong>Gemini Verdict:</strong>
+                    <p id="resReason">...</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-item"><span>Total Packets</span><strong id="featPackets">-</strong></div>
+                    <div class="feature-item"><span>Avg Pkt Size</span><strong id="featSize">-</strong></div>
+                    <div class="feature-item"><span>Packet Rate</span><strong id="featRate">-</strong></div>
+                    <div class="feature-item"><span>Unique Ports</span><strong id="featPorts">-</strong></div>
+                    <div class="feature-item"><span>TCP Ratio</span><strong id="featTcp">-</strong></div>
+                    <div class="feature-item"><span>Flow Duration</span><strong id="featDuration">-</strong></div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            Class Project | Powered by Google Gemini
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
